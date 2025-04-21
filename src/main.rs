@@ -1,21 +1,19 @@
 use std::io;
 
-// Method declaration
-fn sum_numbers() {
-    // Complete Method
-    let mut sum: i32 = 0;
-    for i in 1..=1000 {
-        sum += i;
-    }
-    println!("{}", sum);
+// Function declaration
+fn product (a: i32, b: i32) {
+    println!("{}", a*b);
 }
 
 fn main() {
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).unwrap();
-    let n: i32 = input.trim().parse().unwrap();
-    for _ in 0..n {
-        // Call the method n times
-        sum_numbers();
-    }
+    let mut input_a = String::new();
+    let mut input_b = String::new();
+
+    io::stdin().read_line(&mut input_a).unwrap();
+    io::stdin().read_line(&mut input_b).unwrap();
+
+    let a: i32 = input_a.trim().parse().unwrap();
+    let b: i32 = input_b.trim().parse().unwrap();
+    // Call the function with a and b as arguments
+    product(a, b);
 }
