@@ -1,2 +1,3 @@
 Just found a cool 😎 website to learn a new language
-<a href="coddy.tech">
+<br>
+<a href="coddy.tech" target="_blank">Visit Coddy</a>
