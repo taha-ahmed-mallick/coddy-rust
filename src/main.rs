@@ -1,17 +1,14 @@
-use std::io;
-
 fn main() {
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).unwrap();
-    let count: i32 = input.trim().parse().unwrap();
-    let mut num: i32;
-    // Write your code below
-    let mut sum: i32 = 0;
-    for _i in 0..count {
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-        num = input.trim().parse().unwrap();
-        sum += num;
+    // Declare x and initialize it with 5
+    let x: i32 = 5;
+    // Print the value of x
+    println!("x is: {}", x);
+    {
+        // Shadow x with the original x plus 3
+        let x: i32 = x + 3;
+        // Print the value of the shadowed x
+        println!("x is: {}", x);
     }
-    println!("{}", sum);
+    // Print the value of outer x
+    println!("x is: {}", x);
 }
