@@ -1,14 +1,21 @@
-fn main() {
-    // Declare x and initialize it with 5
-    let x: i32 = 5;
-    // Print the value of x
-    println!("x is: {}", x);
-    {
-        // Shadow x with the original x plus 3
-        let x: i32 = x + 3;
-        // Print the value of the shadowed x
-        println!("x is: {}", x);
+use std::io;
+
+// Method declaration
+fn sum_numbers() {
+    // Complete Method
+    let mut sum: i32 = 0;
+    for i in 1..=1000 {
+        sum += i;
     }
-    // Print the value of outer x
-    println!("x is: {}", x);
+    println!("{}", sum);
+}
+
+fn main() {
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).unwrap();
+    let n: i32 = input.trim().parse().unwrap();
+    for _ in 0..n {
+        // Call the method n times
+        sum_numbers();
+    }
 }
