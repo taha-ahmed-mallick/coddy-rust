@@ -1,10 +1,11 @@
-fn main() {
-    // Create the shopping_list array here
-    let shopping_list= ["bread", "eggs", "milk", "butter"];
-    
-    // Don't change the code below
-    println!("Shopping List:");
-    for i in 0..shopping_list.len() {
-        println!("{}", shopping_list[i]);
+fn values(arr: &[i32]) {
+    // Write code here
+    for i in 0..arr.len() {
+        println!("{}", arr[i]);
     }
+}
+
+fn main() {
+    let numbers = [10, 20, 30, 40, 50];
+    values(&numbers);
 }
