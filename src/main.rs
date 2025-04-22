@@ -1,40 +1,16 @@
-use std::io;
-
-fn bigger(arg1: f64, arg2: f64) -> f64 {
-    // Complete the function
-    if arg1 > arg2 {
-        return arg1;
-    } else {
-        return arg2;
-    }
+fn get_user_info() -> (String, i32, String) {
+    // Create name, age, and email variables here
+    let name: String = String::from("Bob");
+    let age: i32 = 25;
+    let email: String = "bob@example.com".to_string();
+    // Return the tuple
+    return (name, age, email);
 }
 
 fn main() {
-    let mut input_iter = String::new();
-    let mut input_num1 = String::new();
-    let mut input_num2 = String::new();
-
-    io::stdin().read_line(&mut input_iter).unwrap();
-    io::stdin().read_line(&mut input_num1).unwrap();
-    io::stdin().read_line(&mut input_num2).unwrap();
-
-    let iter: i32 = input_iter.trim().parse().unwrap();
-    let mut num1: f64 = input_num1.trim().parse().unwrap();
-    let mut num2: f64 = input_num2.trim().parse().unwrap();
-
-    for _ in 0..iter {
-        // Write your code below
-        let mut ret: f64 = bigger(num1, num2);
-        if ret == num1 {
-            ret /= 2.0;
-            num1 = ret;
-        } else {
-            ret /= 2.0;
-            num2 = ret;
-        }
-        println!("{}", ret);
-        if ret <= 2.0 {
-            break;
-        }
-    }
+    // Call get_user_info and destructure the returned tuple
+    let (name, age, email) = get_user_info();
+    
+    // Print the values
+    println!("Name: {}, Age: {}, Email: {}", name, age, email);
 }
