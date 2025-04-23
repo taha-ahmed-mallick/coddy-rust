@@ -3,11 +3,11 @@ use std::convert::TryInto;
 
 fn rev_arr(arr: &[i32]) -> [i32; 8] {
     // Write your code below
-    let mut rev = [0; 8];
-    for (i, &val) in arr.iter().rev().enumerate() {
-        rev[i] = val;
+    let mut reversed: [i32; 8] = [0; 8];
+    for i in 0..arr.len() {
+        reversed[7-i] = arr[i];
     }
-   return rev;
+    reversed
 }
 
 fn main() {
