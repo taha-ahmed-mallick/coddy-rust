@@ -1,21 +1,37 @@
 fn main() {
-    let numbers1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26];
-    let numbers2 = [17, 53, 24, 77, 84, 98, 24, 36, 89, 31, 36];
-    print!("Array 1: ");
-    // Write your code here
-    for i in (0..numbers1.len()).rev().step_by(3) {
-        print!("[{}], ", numbers1[i]);
+    let mut prices = [2.99, 1.50, 5.00, 3.75, 4.20, 2.25, 7.91];
+
+    println!("Original Prices:");
+    // TODO: Use enumerate to print each item number and price
+    // Expected: "Item 1: $2.99" etc.
+    for (i, value) in prices.iter().enumerate() {
+        println!("Item {}: ${}", i+1, value)
     }
-    println!();
-    print!("Array 2: ");
-    // Write your code here
-    for i in (0..numbers2.len()).rev() {
-        if numbers2[i]%4==0 {
-            if i != numbers2.len()-1 {
-                print!(", ")
-            }
-            print!("[{}]", numbers2[i]);
+    println!("\nBundle Deals:");
+    // TODO: Use chunks to print pairs of prices and their sums
+    // Expected: "Bundle 1: $2.99 + $1.50 = $4.49" etc.
+    let mut count = 1;
+    for chunk in prices.chunks(2) {
+        if chunk.len() == 2 {
+            println!(
+                "Bundle {}: ${} + ${} = ${}",
+                count,
+                chunk[0],
+                chunk[1],
+                chunk[0] + chunk[1]
+            );
+        } else {
+            println!("Bundle {}: ${}", count, chunk[0]);
         }
+        count += 1;
     }
-    println!();
+    // TODO: Use iter_mut to apply 10% discount to all prices
+
+    println!("\nPrices after 10% discount:");
+    // TODO: Print final prices after discount
+    // Expected: "$2.69" etc.
+    for price in prices.iter_mut() {
+        *price *= 0.9;
+        println!("${}", price);
+    }
 }
