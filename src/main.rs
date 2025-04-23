@@ -1,21 +1,20 @@
 use std::io;
 use std::convert::TryInto;
 
-fn analyze_array(arr: &mut [String; 5]) {
-    // Write code here
-    println!("Is empty: {}", arr.is_empty());
-    println!("Contains 5: {}", arr.contains(&"5".to_string()));
-    println!("Reversed Elements:");
-    arr.reverse();
-    // Print elements line by line
-    for element in arr.iter() {
-        println!("{}", element);
+fn prod(arr: &[i32]) -> i32 {
+    // Write your code below
+    let mut result: i32 = 1;
+    for i in 0..arr.len() {
+        result*=arr[i];
     }
+    return result;
 }
 
 fn main() {
     let mut input_str_arr = String::new();
     io::stdin().read_line(&mut input_str_arr).unwrap();
-    let mut arr: [String; 5] = input_str_arr.split(',').map(String::from).collect::<Vec<String>>().try_into().unwrap();
-    analyze_array(&mut arr);
+    let input_str_arr = input_str_arr.trim();
+    let numbers: [i32; 8] = input_str_arr.split(',').map(|s| s.parse::<i32>().unwrap()).collect::<Vec<i32>>().try_into().unwrap();
+    let result = prod(&numbers);
+    println!("Product of array elements: {}", result);
 }
