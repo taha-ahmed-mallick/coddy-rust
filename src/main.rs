@@ -1,8 +1,21 @@
 fn main() {
-    let numbers = [1, 2, 3, 4, 5];
-    println!("{:?} ", numbers);
-    let arr = [1.12345, 2.23456, 3.34567];
-    println!("{:.2?}", arr);
-    let grades = ['A', 'B', 'C', 'D', 'F'];
-    println!("{:?}", grades);
+    let numbers1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26];
+    let numbers2 = [17, 53, 24, 77, 84, 98, 24, 36, 89, 31, 36];
+    print!("Array 1: ");
+    // Write your code here
+    for i in (0..numbers1.len()).rev().step_by(3) {
+        print!("[{}], ", numbers1[i]);
+    }
+    println!();
+    print!("Array 2: ");
+    // Write your code here
+    for i in (0..numbers2.len()).rev() {
+        if numbers2[i]%4==0 {
+            if i != numbers2.len()-1 {
+                print!(", ")
+            }
+            print!("[{}]", numbers2[i]);
+        }
+    }
+    println!();
 }
