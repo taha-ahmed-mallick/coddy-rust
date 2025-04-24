@@ -1,37 +1,36 @@
-fn main() {
-    let mut prices = [2.99, 1.50, 5.00, 3.75, 4.20, 2.25, 7.91];
+use std::io;
+use std::convert::TryInto;
 
-    println!("Original Prices:");
-    // TODO: Use enumerate to print each item number and price
-    // Expected: "Item 1: $2.99" etc.
-    for (i, value) in prices.iter().enumerate() {
-        println!("Item {}: ${}", i+1, value)
+fn calculate_stats(arr: [i32; 8]) -> [f64; 4] {
+    // Write your code here
+    let mut sum = 0;
+    for number in &arr {
+        sum+=number;
     }
-    println!("\nBundle Deals:");
-    // TODO: Use chunks to print pairs of prices and their sums
-    // Expected: "Bundle 1: $2.99 + $1.50 = $4.49" etc.
-    let mut count = 1;
-    for chunk in prices.chunks(2) {
-        if chunk.len() == 2 {
-            println!(
-                "Bundle {}: ${} + ${} = ${}",
-                count,
-                chunk[0],
-                chunk[1],
-                chunk[0] + chunk[1]
-            );
-        } else {
-            println!("Bundle {}: ${}", count, chunk[0]);
+    let avg = sum as f64/arr.len() as f64;
+    let mut max = arr[0];
+    for &number in &arr[1..] {
+        if number > max {
+            max = number;
         }
-        count += 1;
     }
-    // TODO: Use iter_mut to apply 10% discount to all prices
+    let mut min = arr[0];
+    for &number in &arr[1..] {
+        if number < min {
+            min = number;
+        }
+    }
+    return [sum as f64, avg, max as f64, min as f64];
+}
 
-    println!("\nPrices after 10% discount:");
-    // TODO: Print final prices after discount
-    // Expected: "$2.69" etc.
-    for price in prices.iter_mut() {
-        *price *= 0.9;
-        println!("${}", price);
-    }
+fn main() {
+    let mut input_str_arr = String::new();
+    io::stdin().read_line(&mut input_str_arr).unwrap();
+    let input_str_arr = input_str_arr.trim();
+    let numbers: [i32; 8] = input_str_arr.split(',').map(|s| s.parse::<i32>().unwrap()).collect::<Vec<i32>>().try_into().unwrap();
+    let stats = calculate_stats(numbers);
+    println!("Sum: {}", stats[0]);
+    println!("Average: {}", stats[1]);
+    println!("Maximum: {}", stats[2]);
+    println!("Minimum: {}", stats[3]);
 }
