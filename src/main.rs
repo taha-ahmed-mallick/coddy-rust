@@ -1,29 +1,33 @@
 use std::io;
 use std::convert::TryInto;
 
-fn main() {
-    let mut input_str_arr_1 = String::new();
-    let mut input_str_arr_2 = String::new();
-    io::stdin().read_line(&mut input_str_arr_1).unwrap();
-    io::stdin().read_line(&mut input_str_arr_2).unwrap();
-    let input_str_arr_1 = input_str_arr_1.trim();
-    let input_str_arr_2 = input_str_arr_2.trim();
-    let arr1: [String; 8] = input_str_arr_1.split(',').map(String::from).collect::<Vec<String>>().try_into().unwrap();
-    let arr2: [String; 3] = input_str_arr_2.split(',').map(String::from).collect::<Vec<String>>().try_into().unwrap();
-    
-    let mut result = true;
+
+fn calculate_average_grade(grades: [i32; 8]) -> String {
     // Write your code below
-    for (i, value)  in arr1.iter().enumerate() {
-        if value == &arr2[0] {
-            for (j,num) in arr2.iter().enumerate() {
-                if num == &arr1[i+j] {
-                    continue;
-                }
-                result = false;
-            }
-        }
+    let mut  sum: i32 = 0;
+    for marks in grades.iter() {
+        sum+=marks;
     }
-
-
-    println!("{}", result);
+    let avg: f64 = (sum as f64) / 8.0;
+    let grade: char = if avg>=90.0 {
+        'A'
+    } else if avg>=80.0 {
+        'B'
+    } else if avg >=70.0 {
+        'C'
+    } else if avg >=60.0{
+        'D'
+    } else {
+        'F'
+    };
+    let res = format!("Average grade: {:.2} - {grade}", avg);
+    return res;
+}
+fn main() {
+    let mut input_str_arr = String::new();
+    io::stdin().read_line(&mut input_str_arr).unwrap();
+    let input_str_arr = input_str_arr.trim();
+    let arr: [i32; 8] = input_str_arr.split(',').map(|s| s.parse::<i32>().unwrap()).collect::<Vec<i32>>().try_into().unwrap();
+    let res = calculate_average_grade(arr);
+    println!("{}", res);
 }
