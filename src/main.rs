@@ -1,17 +1,17 @@
 use std::io;
 
-fn analyze_string(s: &str) {
-    // Write your code here
-    println!("Length: {}", s.len());
-    println!("Char at 4: {}", s.chars().nth(4).unwrap());
-    println!("Contains Rust: {}", s.contains("Rust"));
-    println!("Ends with dot: {}", s.ends_with("."));
-    println!("Uppercase: {}", s.to_uppercase());
-}
 
 fn main() {
-    let mut message = String::new();
-    io::stdin().read_line(&mut message).unwrap();
-    let message = message.trim();
-    analyze_string(message);
+    let mut input_name = String::new();
+    let mut input_year = String::new();
+    io::stdin().read_line(&mut input_name).unwrap();
+    io::stdin().read_line(&mut input_year).unwrap();
+    let name = input_name.trim();
+    let year: i32 = input_year.trim().parse().unwrap();
+
+    // Write your code below
+    
+    
+    let secret_code = format!("⭐{}⭐-{}", name.chars().nth(0).unwrap().to_uppercase(), year.to_string().chars().rev().collect::<String>());
+    println!("{}", secret_code);
 }
