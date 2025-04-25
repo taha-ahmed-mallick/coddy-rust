@@ -1,32 +1,15 @@
 use std::io;
 
 fn main() {
-    // Declare your final_password variable here
-    let mut final_password: String;
-    
-    {
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-        input = input.trim().to_string();
-        // Add your code here to handle the first input
-        final_password = format!("{}",input);
-    }
-    
-    {
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-        input = input.trim().to_string();
-        // Add your code here to handle the second input
-        final_password=format!("{final_password}{}", input);
-    }
-    
-    {
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-        input = input.trim().to_string();
-        // Add your code here to handle the third input
-        final_password=format!("{1}{0}", input, final_password);
-    }
+    let mut input_n = String::new();
+    io::stdin().read_line(&mut input_n).unwrap();
+    let n: i32 = input_n.trim().parse().unwrap();
 
-    println!("Generated password: {}", final_password);
+    for i in 1..i32::MAX {
+        let line = "*".repeat((2*i-1) as usize);
+        println!("{}", line);
+        if n == (2*i-1) {
+            break;
+        }
+    }
 }
